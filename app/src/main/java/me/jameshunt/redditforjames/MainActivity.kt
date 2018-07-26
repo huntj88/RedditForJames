@@ -16,6 +16,8 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        showSplashFragment()
+
         this.activityComponent = createActivityComponent()
         AsyncInjector(this)
                 .inject()
@@ -23,6 +25,7 @@ class MainActivity : BaseActivity() {
                         onError = { Timber.e(it) },
                         onComplete = {
                             //stop showing splash screen, dependencies ready to go
+                            showTestFragment()
                             Timber.i(okHttpClient.toString())
                         }
                 )
@@ -32,6 +35,20 @@ class MainActivity : BaseActivity() {
             .builder()
             .appComponent(application.appComponent())
             .build()
+
+    private fun showSplashFragment() {
+        supportFragmentManager
+                .beginTransaction()
+                .add(R.id.fragmentContainer, SplashFragment(), SplashFragment::class.java.simpleName)
+                .commit()
+    }
+
+    private fun showTestFragment() {
+        supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragmentContainer, TestFragment(), TestFragment::class.java.simpleName)
+                .commit()
+    }
 
     override fun cleanUp() {
 
