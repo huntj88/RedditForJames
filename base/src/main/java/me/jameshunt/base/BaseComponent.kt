@@ -1,0 +1,4 @@
+package me.jameshunt.base
+
+interface BaseAppComponent
+interface BaseActivityComponent
