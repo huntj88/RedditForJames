@@ -8,7 +8,9 @@ import javax.inject.Scope
 interface BaseAppComponent {
     fun getOkHttpClient(): OkHttpClient
 }
-interface BaseActivityComponent
+interface BaseActivityComponent {
+    fun getOkHttpClient(): OkHttpClient
+}
 
 @Scope
 @Retention(AnnotationRetention.RUNTIME)

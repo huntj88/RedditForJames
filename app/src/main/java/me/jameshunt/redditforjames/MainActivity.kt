@@ -2,6 +2,7 @@ package me.jameshunt.redditforjames
 
 import android.os.Bundle
 import io.reactivex.rxkotlin.subscribeBy
+import me.jameshunt.account.LoginFragment
 import me.jameshunt.appbase.BaseActivity
 import okhttp3.OkHttpClient
 import timber.log.Timber
@@ -25,7 +26,7 @@ class MainActivity : BaseActivity() {
                         onError = { Timber.e(it) },
                         onComplete = {
                             //stop showing splash screen, dependencies ready to go
-                            showTestFragment()
+                            showLoginFragment()
                             Timber.i(okHttpClient.toString())
                         }
                 )
@@ -43,10 +44,10 @@ class MainActivity : BaseActivity() {
                 .commit()
     }
 
-    private fun showTestFragment() {
+    private fun showLoginFragment() {
         supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.fragmentContainer, TestFragment(), TestFragment::class.java.simpleName)
+                .replace(R.id.fragmentContainer, LoginFragment(), LoginFragment::class.java.simpleName)
                 .commit()
     }
 

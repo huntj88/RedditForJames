@@ -26,6 +26,7 @@ dependencies {
 
     implementation project(':base')
     implementation project(':appbase')
+    implementation project(':account')
 
     implementation "io.reactivex.rxjava2:rxkotlin:$rxjava_kotlin_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rxjava_android_version"
