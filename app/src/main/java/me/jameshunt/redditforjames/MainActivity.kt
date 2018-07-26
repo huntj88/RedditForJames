@@ -1,8 +1,10 @@
 package me.jameshunt.redditforjames
 
 import android.os.Bundle
+import io.reactivex.rxkotlin.subscribeBy
 import me.jameshunt.appbase.BaseActivity
 import okhttp3.OkHttpClient
+import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -15,7 +17,15 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 
         this.activityComponent = createActivityComponent()
-        activityComponent().inject(this)
+        AsyncInjector(this)
+                .inject()
+                .subscribeBy(
+                        onError = { Timber.e(it) },
+                        onComplete = {
+                            //stop showing splash screen, dependencies ready to go
+                            Timber.i(okHttpClient.toString())
+                        }
+                )
     }
 
     private fun createActivityComponent() = DaggerActivityComponent
