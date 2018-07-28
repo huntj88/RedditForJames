@@ -1,4 +1,4 @@
-package me.jameshunt.redditforjames
+package me.jameshunt.template
 
 import android.os.Bundle
 import android.view.LayoutInflater

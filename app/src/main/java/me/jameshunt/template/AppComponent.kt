@@ -1,4 +1,4 @@
-package me.jameshunt.redditforjames
+package me.jameshunt.template
 
 import dagger.Component
 import me.jameshunt.base.BaseAppComponent
@@ -10,4 +10,9 @@ import javax.inject.Singleton
 interface AppComponent: BaseAppComponent {
     //see BaseAppComponent too
 
+    companion object {
+        fun create(): AppComponent = DaggerAppComponent
+                .builder()
+                .build()
+    }
 }
