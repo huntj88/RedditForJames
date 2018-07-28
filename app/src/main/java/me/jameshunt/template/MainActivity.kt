@@ -1,4 +1,4 @@
-package me.jameshunt.redditforjames
+package me.jameshunt.template
 
 import android.os.Bundle
 import io.reactivex.rxkotlin.subscribeBy
@@ -19,23 +19,17 @@ class MainActivity : BaseActivity() {
 
         showSplashFragment()
 
-        this.activityComponent = createActivityComponent()
-        AsyncInjector(this)
-                .inject()
-                .subscribeBy(
-                        onError = { Timber.e(it) },
-                        onComplete = {
-                            //stop showing splash screen, dependencies ready to go
-                            showLoginFragment()
-                            Timber.i(okHttpClient.toString())
-                        }
-                )
-    }
+        this.activityComponent = ActivityComponent.create(application.appComponent())
 
-    private fun createActivityComponent() = DaggerActivityComponent
-            .builder()
-            .appComponent(application.appComponent())
-            .build()
+        AsyncInjector.inject(this).subscribeBy(
+                onError = { Timber.e(it) },
+                onComplete = {
+                    //stop showing splash screen, dependencies ready to go
+                    showLoginFragment()
+                    Timber.i(okHttpClient.toString())
+                }
+        )
+    }
 
     private fun showSplashFragment() {
         supportFragmentManager

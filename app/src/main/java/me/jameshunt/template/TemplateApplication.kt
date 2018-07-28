@@ -1,15 +1,13 @@
-package me.jameshunt.redditforjames
+package me.jameshunt.template
 
 import android.app.Application
 import me.jameshunt.appbase.BaseApplication
 
-class RedditApplication: BaseApplication() {
+class TemplateApplication: BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent
-                .builder()
-                .build()
+        appComponent = AppComponent.create()
     }
 }
 
