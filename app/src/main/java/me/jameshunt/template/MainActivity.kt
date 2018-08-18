@@ -12,14 +12,13 @@ class MainActivity : BaseActivity() {
 
     @Inject
     lateinit var okHttpClient: OkHttpClient
+    // see OkHttpModule
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         showSplashFragment()
-
-        this.activityComponent = ActivityComponent.create(application.appComponent())
 
         AsyncInjector.inject(this).subscribeBy(
                 onError = { Timber.e(it) },
@@ -48,8 +47,4 @@ class MainActivity : BaseActivity() {
     override fun cleanUp() {
 
     }
-}
-
-fun MainActivity.activityComponent(): ActivityComponent {
-    return (this as BaseActivity).activityComponent as ActivityComponent
 }

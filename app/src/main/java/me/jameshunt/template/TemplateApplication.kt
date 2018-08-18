@@ -7,7 +7,7 @@ class TemplateApplication: BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = AppComponent.create()
+        this.appComponent = AppComponent.create()
     }
 }
 

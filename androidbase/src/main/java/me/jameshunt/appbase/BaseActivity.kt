@@ -9,7 +9,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     private var cleanedUp = false
 
-    abstract fun cleanUp()
+    open fun cleanUp() {}
 
     override fun onPause() {
         super.onPause()

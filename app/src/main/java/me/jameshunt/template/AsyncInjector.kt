@@ -3,10 +3,13 @@ package me.jameshunt.template
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import me.jameshunt.appbase.BaseActivity
 
 class AsyncInjector private constructor() {
     companion object {
         fun inject(mainActivity: MainActivity): Completable {
+            mainActivity.activityComponent = ActivityComponent.create(mainActivity.application.appComponent())
+
             return Completable
                     .fromAction { mainActivity.activityComponent().inject(mainActivity) }
                     .subscribeOn(Schedulers.computation())
@@ -14,4 +17,8 @@ class AsyncInjector private constructor() {
                     .observeOn(AndroidSchedulers.mainThread())
         }
     }
+}
+
+private fun MainActivity.activityComponent(): ActivityComponent {
+    return (this as BaseActivity).activityComponent as ActivityComponent
 }

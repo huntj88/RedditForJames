@@ -6,7 +6,7 @@ abstract class BaseDialogFragment : DialogFragment() {
 
     private var cleanedUp = false
 
-    abstract fun cleanUp()
+    open fun cleanUp() {}
 
     override fun onPause() {
         super.onPause()
