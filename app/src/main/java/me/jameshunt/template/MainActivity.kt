@@ -3,6 +3,7 @@ package me.jameshunt.template
 import android.os.Bundle
 import io.reactivex.rxkotlin.subscribeBy
 import me.jameshunt.account.LoginFragment
+import me.jameshunt.app.L10n
 import me.jameshunt.appbase.BaseActivity
 import okhttp3.OkHttpClient
 import timber.log.Timber
@@ -17,6 +18,9 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        Timber.i("test: ${L10n.app_name}")
+        Timber.i("test: ${L10n.test}")
 
         showSplashFragment()
 
