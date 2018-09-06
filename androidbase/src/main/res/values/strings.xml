@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">appBase</string>
+    <string name="param_example">check out param1: %1$s!, and param2: %2$s!</string>
+    <string name="param_example_short">check out param1: %s!, and param2: %s!</string>
+    <string name="escaping_stuff">appBase\n sup "dog"  \\/\\/\\/</string>
+    <string name="fallback_by_default">fallback for languages that are missing</string>
+    <string name="weird_formatting">hello
+    idk whats happending\n weird line breaks
+        in places\n
+    </string>
 </resources>

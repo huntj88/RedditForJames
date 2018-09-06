@@ -19,8 +19,11 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        L10n.add_receipt_help
+
+        L10n.my_recipe_box_move_recipe("blag","blah")
+
         Timber.i("test: ${L10n.app_name}")
-        Timber.i("test: ${L10n.test}")
 
         showSplashFragment()
 
